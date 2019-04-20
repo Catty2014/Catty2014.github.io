@@ -1,4 +1,4 @@
-title: C2.3_概率与期望DP
+title: C2.3 概率与期望DP
 tags:
   - OI
   - DP

@@ -1,4 +1,4 @@
-title: C2.2_数位DP
+title: C2.2 数位DP
 tags:
   - OI
   - DP
