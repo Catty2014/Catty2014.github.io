@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>C2.2_数位DP | Pig2014的博客 | 欢迎光临我的博客！~\(≧▽≦)/~啦啦啦！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="OI,DP,数位DP">
+  <meta name="description" content="数位DP 前置知识: DP  区间  区间的加减法   可选：  记忆化搜索  例题_0题目描述：  小C在2018NOIP惨跪，他依稀记得他的准考证号是62，现在小C又将要面临一场比赛，他希望准考证号不连续出现62，同时他又十分讨厌4，所以也不希望4出现在准考证号中。。。现在他想知道在A和B之间有多少合法的准考证号  这道题可以枚举每一位数，判断是否满足条件并计数 但是… 数据规模：">
+<meta name="keywords" content="OI,DP,数位DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C2.2_数位DP">
+<meta property="og:url" content="http://Catty2014.github.io/2019/04/06/C2-2-数位DP/index.html">
+<meta property="og:site_name" content="Pig2014的博客">
+<meta property="og:description" content="数位DP 前置知识: DP  区间  区间的加减法   可选：  记忆化搜索  例题_0题目描述：  小C在2018NOIP惨跪，他依稀记得他的准考证号是62，现在小C又将要面临一场比赛，他希望准考证号不连续出现62，同时他又十分讨厌4，所以也不希望4出现在准考证号中。。。现在他想知道在A和B之间有多少合法的准考证号  这道题可以枚举每一位数，判断是否满足条件并计数 但是… 数据规模：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-19T15:46:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C2.2_数位DP">
+<meta name="twitter:description" content="数位DP 前置知识: DP  区间  区间的加减法   可选：  记忆化搜索  例题_0题目描述：  小C在2018NOIP惨跪，他依稀记得他的准考证号是62，现在小C又将要面临一场比赛，他希望准考证号不连续出现62，同时他又十分讨厌4，所以也不希望4出现在准考证号中。。。现在他想知道在A和B之间有多少合法的准考证号  这道题可以枚举每一位数，判断是否满足条件并计数 但是… 数据规模：">
+  
+  <meta name="summary" content="这是一个CDSS高一的蒟蒻OIer的Hexo博客!很高兴见到你嗷!">
+  <link rel="shortcut icon" href="/img/favicon2.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/avatarnew.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">Catty2014</h5>
+        <a href="mailto:18111431031@163.com" title="18111431031@163.com" class="mail">18111431031@163.com</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/">
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives">
+              <i class="icon icon-lg icon-archives"></i>
+              档案
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags">
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/Catty2014" target="_blank">
+              <i class="icon icon-lg icon-github"></i>
+              GitHub
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC"></a></p>
+  <p>Pig2014的博客 &copy; 2019</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">C2.2_数位DP</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">C2.2_数位DP</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2019-04-06T08:36:00.000Z" itemprop="datePublished" class="page-time">
+  2019-04-06
+</time>
+
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-C2-2-数位DP" class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OI/">OI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数位DP/">数位DP</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+            <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数位DP"><span class="post-toc-number">1.</span> <span class="post-toc-text">数位DP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前置知识"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前置知识:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例题-0"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">例题_0</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数位DP-介绍"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数位DP_介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#思路-递推"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">思路_递推</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例题-0-参考代码-递推"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">例题_0 参考代码(递推)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#思路-记忆化搜索"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">思路_记忆化搜索</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">小结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">方法:</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#预处理-递推："><span class="post-toc-number">1.7.1.1.</span> <span class="post-toc-text">预处理+递推：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#记忆化搜索："><span class="post-toc-number">1.7.1.2.</span> <span class="post-toc-text">记忆化搜索：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例题-1"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">例题_1</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#思路-递推-1"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">思路_递推</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例题-1-参考代码-递推"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">例题_1 参考代码(递推)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#思路-记忆化搜索-1"><span class="post-toc-number">1.8.3.</span> <span class="post-toc-text">思路_记忆化搜索</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例题-1-参考代码-记忆化搜索"><span class="post-toc-number">1.8.4.</span> <span class="post-toc-text">例题_1 参考代码(记忆化搜索)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#练习"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">练习:</span></a></li></ol></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <!--font face='YaHei Consolas Hybrid' size=3 -->
+<h1 id="数位DP"><a href="#数位DP" class="headerlink" title="数位DP"></a>数位DP</h1><hr>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识:"></a><strong>前置知识:</strong></h2><ul>
+<li><p><a href="NONE" title="C_DP (页面不存在)">DP</a></p>
+</li>
+<li><p><a href="https://baike.baidu.com/item/%E5%8C%BA%E9%97%B4/1273117" title="区间(数学概念)_度娘百科" target="_blank" rel="noopener">区间</a></p>
+</li>
+<li><p>区间的加减法</p>
+</li>
+</ul>
+<p>可选：</p>
+<ul>
+<li><a href="233" title="[未分类]记忆化搜索 (页面不存在)">记忆化搜索</a></li>
+</ul>
+<h2 id="例题-0"><a href="#例题-0" class="headerlink" title="例题_0"></a>例题_0</h2><p>题目描述：</p>
+<blockquote>
+<p>小C在2018NOIP惨跪，他依稀记得他的准考证号是62，现在小C又将要面临一场比赛，他希望准考证号不连续出现62，同时他又十分讨厌4，所以也不希望4出现在准考证号中。。。<br>现在他想知道在A和B之间有多少合法的准考证号</p>
+</blockquote>
+<p>这道题可以枚举每一位数，判断是否满足条件并计数</p>
+<p>但是…</p>
+<p>数据规模：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>A,B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20%</td>
+<td>1e7</td>
+</tr>
+<tr>
+<td>100%</td>
+<td><font color="#FF0000"><strong>2e9</strong></font></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Emmm…</p>
+<p>看来dfs和枚举不好使了…</p>
+<h2 id="数位DP-介绍"><a href="#数位DP-介绍" class="headerlink" title="数位DP_介绍"></a>数位DP_介绍</h2><p>数位DP可以用于解决上述问题</p>
+<!-- 
+求出在给定区间[A,B]内，符合条件P(i)的数i的个数.
+条件P(i)一般与数的大小无关，而与 数的组成 有关. -->
+<blockquote>
+<p>数位DP用于求区间<code>[A,B]</code>中，符合条件<code>P(i)</code>的数<code>i</code>的个数<br>条件<code>P(i)</code>通常与数的大小无关，而与 <strong>数的组成</strong> 有关</p>
+</blockquote>
+<p>例0中所求的正是在数的组成中不包含<code>4</code>和<code>62</code>的数的个数</p>
+<h2 id="思路-递推"><a href="#思路-递推" class="headerlink" title="思路_递推"></a>思路_递推</h2><p>//此处<code>f[i,j]</code>等效<code>f[i][j]</code></p>
+<p>首先处理一个<code>f</code>数组，记录个数</p>
+<p><code>f[i,j]</code>表示位数为<code>i</code>，状态为<code>j</code>的方案数</p>
+<p>对于不同的题目，<code>j</code>表示的意义不同</p>
+<font color="#66ccff">
+
+如果一个`j`不能满足状态定义...
+
+那就再定义一维
+
+</font>
+<br>  <br>
+<font color="#ba0000">
+
+*注意:`f[i,j]`的信息允许前导`0`
+
+如`f[4,j]`可以表示方案`0023`
+
+</font>
+
+<p>在本题中,<code>j</code>表示数字最高位为<code>j</code></p>
+<p>如f[4,5]表示5***的状态数</p>
+<p><code>f[i,st]=f[i,st]+f[i-1,st~]</code></p>
+<p>预处理<code>f</code>数组后，就可统计区间<code>[a,b]</code>的答案了</p>
+<p>根据 区间减法:</p>
+<font color="#aaaaaa">(下列两则表述均使用区间)</font>
+
+<p><code>Ans[j,i]=Ans[0,i]-Ans[0,j]</code></p>
+<p>对于整数，就有：</p>
+<p><code>Ans[j,i]=Ans[0,i]-Ans[0,j-1]</code></p>
+<p>对于统计区间<code>[0,n]</code>，可以从高到低枚举哪一位比<code>n</code>小</p>
+<hr>
+<p>$e.g:$</p>
+<p><code>n</code>=<code>345</code></p>
+<p>对于所有的三位数，第一位是<code>0</code>的情况都满足条件</p>
+<p>所以<code>ans+=f[3,0]</code></p>
+<p>同时,第一位是<code>1</code>,<code>2</code>都满足条件</p>
+<p>所以<code>ans+=f[3,1],ans+=f[3,2]</code></p>
+<p>第一位是3是不全部满足条件</p>
+<p>所以枚举下一位</p>
+<p>以此类推:</p>
+<p><code>ans+=f[2,0~3],ans+=f[1,0~4]</code></p>
+<p>最后得到的<code>ans</code>就是答案</p>
+<p>伪代码:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//digit[i] 代表 n 从右到左第i位是多少,len是n有几位。</span></span><br><span class="line"><span class="comment">//如 n=58 digit[1]=8 digit[2]=5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i=len~<span class="number">1</span> <span class="comment">//枚举哪一位&lt;n的对应位</span></span><br><span class="line">    <span class="keyword">for</span> j=<span class="number">0</span>~digit[i]<span class="number">-1</span> <span class="comment">//枚举这一位的取值 </span></span><br><span class="line">        <span class="keyword">if</span> (j!=<span class="number">4</span>)&amp;&amp;!(j==<span class="number">2</span> &amp;&amp;digit[i+<span class="number">1</span>]==<span class="number">6</span>) ans=ans+f[i,j]; <span class="comment">//情况合法 </span></span><br><span class="line">        <span class="keyword">if</span> (digit[i]==<span class="number">4</span>)||(digit[i]==<span class="number">2</span>&amp;&amp;digit[i+<span class="number">1</span>]=<span class="number">6</span>) <span class="keyword">break</span>; <span class="comment">//已经出现4或62</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="例题-0-参考代码-递推"><a href="#例题-0-参考代码-递推" class="headerlink" title="例题_0 参考代码(递推)"></a>例题_0 参考代码(递推)</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">12</span>][<span class="number">2</span>],digit[<span class="number">12</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> len,<span class="keyword">bool</span> state,<span class="keyword">bool</span> fp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!len)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(!fp &amp;&amp; dp[len][state] != <span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> dp[len][state];</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">0</span> , fpmax = fp ? digit[len] : <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=fpmax;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">4</span> || state &amp;&amp; i == <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        ret += dfs(len<span class="number">-1</span>,i == <span class="number">6</span>,fp &amp;&amp; i == fpmax);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!fp)</span><br><span class="line">        dp[len][state] = ret;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(n)</span><br><span class="line">    &#123;</span><br><span class="line">        digit[++len] = n % <span class="number">10</span>;</span><br><span class="line">        n /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dfs(len,<span class="literal">false</span>,<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a,b;</span><br><span class="line">    <span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,f(b)-f(a<span class="number">-1</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="思路-记忆化搜索"><a href="#思路-记忆化搜索" class="headerlink" title="思路_记忆化搜索"></a>思路_记忆化搜索</h2><p>如果学过记忆化搜索，也可以考虑用记忆化搜索做这道题:</p>
+<blockquote>
+<p>Dp[i][1]表示长度为i，上一位是6的所有数量<br>Dp[i][0]表示长度为i，上一位不是6的所有数量 </p>
+</blockquote>
+<p>代码就不给出啦<del>(其实是我根本就没有用记搜写出来)</del></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>如何求出在给定区间[A,B]内，符合条件P(i)的数i的个数？</p>
+<p>条件P(i)一般与数的大小无关，而与<strong>数的组成</strong>有关，有以下几种P(i)：</p>
+<p>递增/递减: 1234,2579,…</p>
+<p>双峰: 19280,26193,…</p>
+<p>含/不含某一数字，比如含49: 49,149,1492,…</p>
+<p>被某一数m整除，比如m=13: 39,130,650… </p>
+<p>$etc..$</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h3><h4 id="预处理-递推："><a href="#预处理-递推：" class="headerlink" title="预处理+递推："></a>预处理+递推：</h4><p>先确定了结果与输入的数无关，且有大量结算可以预处理。</p>
+<p>要点是预处理的区间要包含所有情况。</p>
+<p>计算时，相当于用一些区间拼凑出计算的区间。</p>
+<p>与RMQ算法有点类似。<del>(我怎么没看出来)</del></p>
+<h4 id="记忆化搜索："><a href="#记忆化搜索：" class="headerlink" title="记忆化搜索："></a>记忆化搜索：</h4><p>关键是状态定义，通常是<code>dp[i][s]</code> </p>
+<p><code>i</code>表示当前这一位，一般是从高位向低位扫描，计算的时候实际是右边到左边（递归）</p>
+<p><code>s</code>根据情况定义，要点是要把走过的高位的所有状态记录下来，同时要保证走过的路是合法的。 </p>
+<h2 id="例题-1"><a href="#例题-1" class="headerlink" title="例题_1"></a>例题_1</h2><p>题目描述:</p>
+<blockquote>
+<p>给定两个正整数a和b，求在[a,b]中的所有整数中，每个数码(digit)各出现了多少次。</p>
+</blockquote>
+<h3 id="思路-递推-1"><a href="#思路-递推-1" class="headerlink" title="思路_递推"></a>思路_递推</h3><p>按数位dp一般方法，定义f[i][j]表示长为i，最高位是j，这样的定义没有把统计哪个数</p>
+<p>字的状态记录下来，所以增加一维k，</p>
+<p>f[i][j][k]表示长为i，最高位是j，包含数字k 的数的个数 </p>
+<p>情况1:当j!=k</p>
+<p><code>f[i][j][k]=sum{f[i-1][j’][k]} 0&lt;=j’&lt;=9</code></p>
+<p>• 情况2：当j=k,则数字k的个数要累加10^(i-2)</p>
+<p><code>f[i][j][j]+=10^(i-2)</code></p>
+<h3 id="例题-1-参考代码-递推"><a href="#例题-1-参考代码-递推" class="headerlink" title="例题_1 参考代码(递推)"></a>例题_1 参考代码(递推)</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span>  <span class="keyword">namespace</span>  <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">20</span>;</span><br><span class="line"> </span><br><span class="line">ll a,b;</span><br><span class="line">ll dp[maxn][maxn][maxn];</span><br><span class="line">ll bin[maxn];</span><br><span class="line">ll res[maxn];</span><br><span class="line"><span class="keyword">int</span> d[maxn];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">  bin[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=<span class="number">13</span>; i++)bin[i]=bin[i<span class="number">-1</span>]*<span class="number">10</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=<span class="number">9</span>; i++)dp[<span class="number">1</span>][i][i]=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=<span class="number">13</span>; i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;=<span class="number">9</span>; j++)</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> z=<span class="number">0</span>; z&lt;=<span class="number">9</span>; z++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>; k&lt;=<span class="number">9</span>; k++)</span><br><span class="line">           dp[i][j][z]+=dp[i<span class="number">-1</span>][k][z];</span><br><span class="line">        dp[i][z][z]+=bin[i<span class="number">-1</span>];</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(ll x,<span class="keyword">int</span> flag)</span></span>&#123; </span><br><span class="line">  <span class="keyword">int</span> dnum=<span class="number">0</span>;</span><br><span class="line">  ll tmpn=x;</span><br><span class="line">  <span class="built_in">memset</span>(d, <span class="number">0</span>, <span class="keyword">sizeof</span>(d));</span><br><span class="line">  <span class="keyword">while</span>(x)&#123; d[++dnum]=x%<span class="number">10</span>; x/=<span class="number">10</span>;&#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=dnum<span class="number">-1</span>; i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=<span class="number">9</span>; j++)</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>; k&lt;=<span class="number">9</span>; k++)</span><br><span class="line">        res[k]+=(dp[i][j][k]*flag);</span><br><span class="line">  <span class="keyword">int</span> tmp=dnum;</span><br><span class="line">  <span class="keyword">while</span>(tmp)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;d[tmp]; i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(!i &amp;&amp; tmp==dnum)<span class="keyword">continue</span>;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;=<span class="number">9</span>; j++)</span><br><span class="line">        res[j]+=(dp[tmp][i][j]*flag);</span><br><span class="line">    &#125;</span><br><span class="line">    res[d[tmp]]+=(tmpn%bin[tmp]+<span class="number">1</span>)*flag;</span><br><span class="line">    tmp--;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;  </span><br><span class="line">  init();</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;a,&amp;b);</span><br><span class="line">  solve(b, <span class="number">1</span>);solve(a<span class="number">-1</span>, <span class="number">-1</span>); </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=<span class="number">9</span>; i++)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld%c"</span>,res[i],i==<span class="number">9</span>?<span class="string">'\n'</span>:<span class="string">' '</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="思路-记忆化搜索-1"><a href="#思路-记忆化搜索-1" class="headerlink" title="思路_记忆化搜索"></a>思路_记忆化搜索</h3><p>数位dp记忆化搜索思想和预处理递推方法有些差别，但主要还是基于“拼数”。状态定义也类似：</p>
+<p>定义<code>f[i][j][s]</code>表示当前<code>i</code>位中数字<code>j</code>出现的次数，<code>s</code>表示前面<code>j</code>已经出现的次数</p>
+<p>然后记忆化模板，注意前导零 </p>
+<h3 id="例题-1-参考代码-记忆化搜索"><a href="#例题-1-参考代码-记忆化搜索" class="headerlink" title="例题_1 参考代码(记忆化搜索)"></a>例题_1 参考代码(记忆化搜索)</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line">ll a,b,f[<span class="number">20</span>][<span class="number">20</span>][<span class="number">20</span>],L[<span class="number">20</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> t,<span class="keyword">int</span> sum,<span class="keyword">int</span> zero,<span class="keyword">int</span> ismx)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l==<span class="number">0</span>) <span class="keyword">return</span> sum;</span><br><span class="line">	<span class="keyword">if</span>(!ismx&amp;&amp;!zero&amp;&amp;f[l][t][sum]!=<span class="number">-1</span>) <span class="keyword">return</span> f[l][t][sum];</span><br><span class="line">	ll ret=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> mx=ismx?L[l]:<span class="number">9</span>;</span><br><span class="line">	<span class="keyword">if</span>(!zero||l==<span class="number">1</span>) </span><br><span class="line">		ret+=dfs(l<span class="number">-1</span>,t,sum+(t==<span class="number">0</span>),<span class="number">0</span>,ismx&amp;&amp;(L[l]==<span class="number">0</span>));</span><br><span class="line">	<span class="keyword">else</span> ret+=dfs(l<span class="number">-1</span>,t,sum,<span class="number">1</span>,ismx&amp;&amp;(L[l]==<span class="number">0</span>));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=mx;i++)</span><br><span class="line">		ret+=dfs(l<span class="number">-1</span>,t,sum+(t==i),<span class="number">0</span>,ismx&amp;&amp;(L[l]==i));</span><br><span class="line">	<span class="keyword">return</span> (ismx||zero)?ret:f[l][t][sum]=ret; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">solve</span><span class="params">(ll n,<span class="keyword">int</span> t)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> t==<span class="number">0</span>?<span class="number">1</span>:<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> len=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(n)&#123;</span><br><span class="line">		L[++len]=n%<span class="number">10</span>;</span><br><span class="line">		n/=<span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dfs(len,t,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;a,&amp;b);</span><br><span class="line">	<span class="built_in">memset</span>(f,<span class="number">-1</span>,<span class="keyword">sizeof</span>(f));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">9</span>;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld "</span>,solve(b,i)-solve(a<span class="number">-1</span>,i));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习:"></a>练习:</h2><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5898" target="_blank" rel="noopener">HDU 5898</a> odd-even number</p>
+<p><a href="https://www.spoj.com/problems/SORTBIT/" target="_blank" rel="noopener">SPOJ 1182</a> Sorted bit sequence</p>
+<p><a href="https://loj.ac/problem/2044" target="_blank" rel="noopener">Libre 2044</a>  [CQOI2016]电话号码</p>
+<p><a href="http://acm.timus.ru/problem.aspx?space=1&amp;num=1057" target="_blank" rel="noopener">Ural 1057</a> Amount of Degrees</p>
+<p><a href="localhost" title="[链接无效]">SDZJU 1077</a> 美丽数</p>
+<p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1799" target="_blank" rel="noopener">BZOJ 1799</a> self同类分布</p>
+<hr>
+<!--/font-->
+
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://Catty2014.github.io/2019/04/06/C2-2-数位DP/" target="_blank" rel="external">http://Catty2014.github.io/2019/04/06/C2-2-数位DP/</a>
+                </p>
+                <footer><cite><a href="http://Catty2014.github.io">@Pig2014的博客</a></cite></footer>
+            </blockquote>
+            </div>
+            
+
+
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2019/04/12/C3-1-1-斜率优化/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">C3.1_1_斜率优化</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2019/04/06/C2-3-概率与期望DP/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">C2.3_概率与期望DP</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            <div id="git"></div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Sat Apr 06 2019 16:36:00 GMT+0800',
+    owner: "Catty2014",
+    repo: "Catty2014.github.io",
+    oauth: {
+    client_id: "126adb1056fb6218314f",
+    client_secret: "6964430ab40b4c4e21c0bb4ff1e406419d57d33f",
+    },
+})
+gitment.render('git')
+</script>
+
+            
+
+            
+        </div>
+    </div>
+</article>
+
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "C2.2_数位DP",
+    pic: "/img/avatarnew.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "http://Catty2014.github.io/2019/04/06/C2-2-数位DP/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

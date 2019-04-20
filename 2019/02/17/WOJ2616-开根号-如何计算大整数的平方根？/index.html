@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>[WOJ2616 开根号]如何计算大整数的平方根？ | Pig2014的博客 | 欢迎光临我的博客！~\(≧▽≦)/~啦啦啦！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="OI,高精度,题解">
+  <meta name="description" content="如何计算大整数的平方根？ PORTAL 一句话描述给大整数(0&amp;lt;n&amp;lt;=10^1000)开根，向下取整。 分析本题的数据范围是1000位，long long int肯定装不下(9e18) 但是long double(1e4000)又会损失精度(18位) 所以本题要用高精度计算 但是高精度似乎不好开方 所以… 手动开方如何对一个数手动开方？  首先把数字划分为组，以小数点为分界线，向左右每">
+<meta name="keywords" content="OI,高精度,题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[WOJ2616 开根号]如何计算大整数的平方根？">
+<meta property="og:url" content="http://Catty2014.github.io/2019/02/17/WOJ2616-开根号-如何计算大整数的平方根？/index.html">
+<meta property="og:site_name" content="Pig2014的博客">
+<meta property="og:description" content="如何计算大整数的平方根？ PORTAL 一句话描述给大整数(0&amp;lt;n&amp;lt;=10^1000)开根，向下取整。 分析本题的数据范围是1000位，long long int肯定装不下(9e18) 但是long double(1e4000)又会损失精度(18位) 所以本题要用高精度计算 但是高精度似乎不好开方 所以… 手动开方如何对一个数手动开方？  首先把数字划分为组，以小数点为分界线，向左右每">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-19T15:46:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[WOJ2616 开根号]如何计算大整数的平方根？">
+<meta name="twitter:description" content="如何计算大整数的平方根？ PORTAL 一句话描述给大整数(0&amp;lt;n&amp;lt;=10^1000)开根，向下取整。 分析本题的数据范围是1000位，long long int肯定装不下(9e18) 但是long double(1e4000)又会损失精度(18位) 所以本题要用高精度计算 但是高精度似乎不好开方 所以… 手动开方如何对一个数手动开方？  首先把数字划分为组，以小数点为分界线，向左右每">
+  
+  <meta name="summary" content="这是一个CDSS高一的蒟蒻OIer的Hexo博客!很高兴见到你嗷!">
+  <link rel="shortcut icon" href="/img/favicon2.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/avatarnew.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">Catty2014</h5>
+        <a href="mailto:18111431031@163.com" title="18111431031@163.com" class="mail">18111431031@163.com</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/">
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives">
+              <i class="icon icon-lg icon-archives"></i>
+              档案
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags">
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/Catty2014" target="_blank">
+              <i class="icon icon-lg icon-github"></i>
+              GitHub
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC"></a></p>
+  <p>Pig2014的博客 &copy; 2019</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">[WOJ2616 开根号]如何计算大整数的平方根？</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">[WOJ2616 开根号]如何计算大整数的平方根？</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2019-02-17T06:11:00.000Z" itemprop="datePublished" class="page-time">
+  2019-02-17
+</time>
+
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-WOJ2616-开根号-如何计算大整数的平方根？" class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OI/">OI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高精度/">高精度</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+            <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#如何计算大整数的平方根？"><span class="post-toc-number">1.</span> <span class="post-toc-text">如何计算大整数的平方根？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一句话描述"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一句话描述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分析"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#手动开方"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">手动开方</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#中间过程未完待续"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">中间过程未完待续!</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Code"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Code:</span></a></li></ol></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="如何计算大整数的平方根？"><a href="#如何计算大整数的平方根？" class="headerlink" title="如何计算大整数的平方根？"></a>如何计算大整数的平方根？</h1><hr>
+<p><a href="http://oi.cdshishi.net:8000/problempage.php?problem_id=2616" target="_blank" rel="noopener">PORTAL</a></p>
+<h2 id="一句话描述"><a href="#一句话描述" class="headerlink" title="一句话描述"></a>一句话描述</h2><p>给大整数(0&lt;n&lt;=10^1000)开根，向下取整。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>本题的数据范围是1000位，long long int肯定装不下(9e18)</p>
+<p>但是long double(1e4000)又会损失精度(18位)</p>
+<p>所以本题要用高精度计算</p>
+<p>但是高精度似乎不好开方</p>
+<p>所以…</p>
+<h2 id="手动开方"><a href="#手动开方" class="headerlink" title="手动开方"></a><font color="red">手动开方</font></h2><p>如何对一个数手动开方？</p>
+<ol>
+<li>首先把数字划分为组，以小数点为分界线，向左右每两个数字划分为一个组，直到结束或不够两个数字此时<br>(最后一个数字单独一组)</li>
+<li><p>以8345679为例，划分后为8,34,56,79</p>
+<p>首先计算8：</p>
+<p>3^2=9&gt;8</p>
+<p>2^2=4&lt;8</p>
+<p>所以开根第一位是2</p>
+</li>
+<li><p><font color="red">&lt;重要&gt;</font> 现在和除法一样，数字下移，和后一组(后两位)组成434</p>
+</li>
+</ol>
+<hr>
+<h2 id="中间过程未完待续"><a href="#中间过程未完待续" class="headerlink" title="中间过程未完待续!"></a>中间过程未完待续!</h2><hr>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> l;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">char</span> *O,<span class="keyword">int</span> I)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> c, *D=O ;</span><br><span class="line">    <span class="keyword">if</span>(o&gt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(l=<span class="number">0</span>;D[l];D[l++]-=<span class="number">10</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            D[l++]-=<span class="number">120</span>;</span><br><span class="line">            D[l]-=<span class="number">110</span>;</span><br><span class="line">            <span class="keyword">while</span>(!work(<span class="number">0</span>,O,l))</span><br><span class="line">                D[l]+=<span class="number">20</span>;</span><br><span class="line">            <span class="built_in">putchar</span>((D[l]+<span class="number">1032</span>)/<span class="number">20</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">putchar</span>(<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        c=o+(D[I]+<span class="number">82</span>)%<span class="number">10</span>-(I&gt;l/<span class="number">2</span>)*(D[I-l+I]+<span class="number">72</span>)/<span class="number">10</span><span class="number">-9</span>;</span><br><span class="line">        D[I]+=I&lt;<span class="number">0</span> ? <span class="number">0</span> : !(o=work(c/<span class="number">10</span>,O,I<span class="number">-1</span>))*((c+<span class="number">999</span>)%<span class="number">10</span>-(D[I]+<span class="number">92</span>)%<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> s[<span class="number">1200</span>];s[<span class="number">0</span>]=<span class="string">'0'</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">strlen</span>(s)%<span class="number">2</span> == <span class="number">1</span>)</span><br><span class="line">        work(<span class="number">2</span>,s+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        work(<span class="number">2</span>,s,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://Catty2014.github.io/2019/02/17/WOJ2616-开根号-如何计算大整数的平方根？/" target="_blank" rel="external">http://Catty2014.github.io/2019/02/17/WOJ2616-开根号-如何计算大整数的平方根？/</a>
+                </p>
+                <footer><cite><a href="http://Catty2014.github.io">@Pig2014的博客</a></cite></footer>
+            </blockquote>
+            </div>
+            
+
+
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2019/02/23/Know/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">CatOI知识汇总</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+            
+            <div id="git"></div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Sun Feb 17 2019 14:11:00 GMT+0800',
+    owner: "Catty2014",
+    repo: "Catty2014.github.io",
+    oauth: {
+    client_id: "126adb1056fb6218314f",
+    client_secret: "6964430ab40b4c4e21c0bb4ff1e406419d57d33f",
+    },
+})
+gitment.render('git')
+</script>
+
+            
+
+            
+        </div>
+    </div>
+</article>
+
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "[WOJ2616 开根号]如何计算大整数的平方根？",
+    pic: "/img/avatarnew.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "http://Catty2014.github.io/2019/02/17/WOJ2616-开根号-如何计算大整数的平方根？/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

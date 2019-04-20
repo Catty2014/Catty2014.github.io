@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>C3.1_1_斜率优化 | Pig2014的博客 | 欢迎光临我的博客！~\(≧▽≦)/~啦啦啦！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="OI,DP,斜率优化">
+  <meta name="description" content="斜率优化DP 前置知识: DP 线性规划 一次函数 单调队列  可选:  平衡树  斜率优化_介绍某种意义上说,斜率优化是单调队列的一种推广应用 和单调队列一样,斜率优化也是利用单调性降低复杂度 **举个栗子:**  对于dp[i]=opt(a[j]+b[j]+..+z[j]+k[i]) (&amp;lt;-省略号中只有有关i的变量)  \*这里的`opt`表示`min`,`max`之类的取值函数,不过好">
+<meta name="keywords" content="OI,DP,斜率优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C3.1_1_斜率优化">
+<meta property="og:url" content="http://Catty2014.github.io/2019/04/12/C3-1-1-斜率优化/index.html">
+<meta property="og:site_name" content="Pig2014的博客">
+<meta property="og:description" content="斜率优化DP 前置知识: DP 线性规划 一次函数 单调队列  可选:  平衡树  斜率优化_介绍某种意义上说,斜率优化是单调队列的一种推广应用 和单调队列一样,斜率优化也是利用单调性降低复杂度 **举个栗子:**  对于dp[i]=opt(a[j]+b[j]+..+z[j]+k[i]) (&amp;lt;-省略号中只有有关i的变量)  \*这里的`opt`表示`min`,`max`之类的取值函数,不过好">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-20T01:18:26.886Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C3.1_1_斜率优化">
+<meta name="twitter:description" content="斜率优化DP 前置知识: DP 线性规划 一次函数 单调队列  可选:  平衡树  斜率优化_介绍某种意义上说,斜率优化是单调队列的一种推广应用 和单调队列一样,斜率优化也是利用单调性降低复杂度 **举个栗子:**  对于dp[i]=opt(a[j]+b[j]+..+z[j]+k[i]) (&amp;lt;-省略号中只有有关i的变量)  \*这里的`opt`表示`min`,`max`之类的取值函数,不过好">
+  
+  <meta name="summary" content="这是一个CDSS高一的蒟蒻OIer的Hexo博客!很高兴见到你嗷!">
+  <link rel="shortcut icon" href="/img/favicon2.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/avatarnew.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">Catty2014</h5>
+        <a href="mailto:18111431031@163.com" title="18111431031@163.com" class="mail">18111431031@163.com</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/">
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives">
+              <i class="icon icon-lg icon-archives"></i>
+              档案
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags">
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/Catty2014" target="_blank">
+              <i class="icon icon-lg icon-github"></i>
+              GitHub
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC"></a></p>
+  <p>Pig2014的博客 &copy; 2019</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">C3.1_1_斜率优化</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">C3.1_1_斜率优化</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2019-04-12T15:51:00.000Z" itemprop="datePublished" class="page-time">
+  2019-04-12
+</time>
+
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-C3-1-1-斜率优化" class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OI/">OI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/斜率优化/">斜率优化</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+            <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#斜率优化DP"><span class="post-toc-number">1.</span> <span class="post-toc-text">斜率优化DP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前置知识"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前置知识:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#斜率优化-介绍"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">斜率优化_介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例题-0"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">例题_0</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简洁题意"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">简洁题意:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例题-0-分析"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">例题_0 分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#DP"><span class="post-toc-number">1.3.2.1.</span> <span class="post-toc-text">DP:</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#斜率优化"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">斜率优化</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="斜率优化DP"><a href="#斜率优化DP" class="headerlink" title="斜率优化DP"></a>斜率优化DP</h1><hr>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识:"></a>前置知识:</h2><ul>
+<li>DP</li>
+<li>线性规划</li>
+<li>一次函数</li>
+<li>单调队列</li>
+</ul>
+<p>可选:</p>
+<ul>
+<li>平衡树</li>
+</ul>
+<h2 id="斜率优化-介绍"><a href="#斜率优化-介绍" class="headerlink" title="斜率优化_介绍"></a>斜率优化_介绍</h2><p>某种意义上说,斜率优化是单调队列的一种推广应用</p>
+<p>和单调队列一样,斜率优化也是利用单调性降低复杂度</p>
+<font color="#66ccff">**举个栗子:**</font>
+
+<p>对于<code>dp[i]=opt(a[j]+b[j]+..+z[j]+k[i])</code> (&lt;-省略号中只有有关i的变量)</p>
+<font size="2" color="#77ddff">
+\*这里的`opt`表示`min`,`max`之类的取值函数,<strike>不过好像也只有`min`,`max`来着</strike>
+</font>
+
+<p>我们可以使用单调队列进行优化</p>
+<p>但对于<code>f[i]=opt(a[j]+...+x[i]-x[j])^2)</code></p>
+<p>如果使用单调队列:</p>
+<p><code>dp[i]=opt(f[j])</code></p>
+<h2 id="例题-0"><a href="#例题-0" class="headerlink" title="例题_0"></a>例题_0</h2><blockquote>
+<p>从山顶上到山底下沿着一条直线种植了n棵老树。当地的政府决定把他们砍下来。为了不浪费任何一棵木材，树被砍倒后要运送到锯木厂。<br>木材只能按照一个方向运输：朝山下运。山脚下有一个锯木厂。另外两个锯木厂将新修建在山路上。<br>你必须决定在哪里修建两个锯木厂，使得传输的费用总和最小。假定运输每公斤木材每米需要一分钱。<br>你的任务是编写一个程序，从输入文件中读入树的个数和他们的重量与位置，计算最小运输费用。</p>
+</blockquote>
+<h3 id="简洁题意"><a href="#简洁题意" class="headerlink" title="简洁题意:"></a>简洁题意:</h3><blockquote>
+<p>有n个点,每个点有权值和到上一个点的距离<br>第n+1个点是木场<br>在中间再修建2个木场,使得总代价(权值*距离)最小</p>
+</blockquote>
+<h3 id="例题-0-分析"><a href="#例题-0-分析" class="headerlink" title="例题_0 分析"></a>例题_0 分析</h3><p>这道题要求<font color="#ffaa00"><strong>最优解问题</strong></font></p>
+<p>而且树木只能向下运输,这就<strong>没有后效性</strong></p>
+<p>所以可以用DP解决这个问题</p>
+<p>同时显然，把木场建在有树的地方可以使代价最小</p>
+<h4 id="DP"><a href="#DP" class="headerlink" title="DP:"></a>DP:</h4><p>第n+1个点是木场,所以我们把n+1号点也看成木场</p>
+<p>设<code>sw[i]</code>是<code>[1,i]</code>的总重量(权值)</p>
+<p><code>sd[i]</code>表示<code>1-&gt;i</code>的距离</p>
+<p><code>sw[i]</code>和<code>sd[i]</code>即是前缀和,公式$sw[i]=\sum<em>{j=1}^{i} w[j] $,$sd[i]=\sum</em>{j=1}^{i-1} d[j]$ , 复杂度均为$O(n)$</p>
+<p><code>cost[i]</code>(后简称<code>c[i]</code>)表示把第一个木场建在<code>i</code>处时<code>[1,i]</code>树木总代价,公式为$c[i]=c[i-1]+sw[i-1]*d[i-1]$,复杂度为$O(n)$</p>
+<p><code>All[i][j]</code>(后简称<code>A[i][j]</code>)表示<code>[i,j]</code>的树运到第<code>j</code>棵树处的树木总代价,公式:$A[i,j]=c[j]-c[i-1]-sw[i-1]*(sd[j]-sd[i-1])$,复杂度为$O(n^2)$,每一项的复杂度为$O(1)$</p>
+<p>设<code>F[n]</code>表示表示把第二个木场建在<code>i</code>处时<code>[1,i]</code>树木总代价</p>
+<p>$F[n]=\min_{1&lt;=j&lt;i} {c[j]+A[j+1][i]+A[i+1][n+1]}$</p>
+<p>综上,整体复杂度为$O(n^2)$</p>
+<font color="#ed0000">**然而...**</font>
+
+<blockquote>
+<p>$2&lt;=n&lt;=20000$</p>
+</blockquote>
+<p>很明显是跑不出来的…</p>
+<h3 id="斜率优化"><a href="#斜率优化" class="headerlink" title="斜率优化"></a>斜率优化</h3>
+
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://Catty2014.github.io/2019/04/12/C3-1-1-斜率优化/" target="_blank" rel="external">http://Catty2014.github.io/2019/04/12/C3-1-1-斜率优化/</a>
+                </p>
+                <footer><cite><a href="http://Catty2014.github.io">@Pig2014的博客</a></cite></footer>
+            </blockquote>
+            </div>
+            
+
+
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2019/04/20/hello-world/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Hello World</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2019/04/06/C2-2-数位DP/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">C2.2_数位DP</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            <div id="git"></div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Fri Apr 12 2019 23:51:00 GMT+0800',
+    owner: "Catty2014",
+    repo: "Catty2014.github.io",
+    oauth: {
+    client_id: "126adb1056fb6218314f",
+    client_secret: "6964430ab40b4c4e21c0bb4ff1e406419d57d33f",
+    },
+})
+gitment.render('git')
+</script>
+
+            
+
+            
+        </div>
+    </div>
+</article>
+
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "C3.1_1_斜率优化",
+    pic: "/img/avatarnew.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "http://Catty2014.github.io/2019/04/12/C3-1-1-斜率优化/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>CatOI知识汇总 | Pig2014的博客 | 欢迎光临我的博客！~\(≧▽≦)/~啦啦啦！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="OI">
+  <meta name="description" content="CatOI姿势知识汇总(Upd v1904)有遗漏，不足和错误之处请在评论区留言嗷  A Cpp语法与基础算法 A1 C基础语法 A1.1 程序的组成 A1.2 输入与输出 A1.3 文件读写 A1.4 变量与常量 A1.4_1 变量 A1.4_2 变量的使用 A1.4_3 常量   A1.5 判断语句 A1.5_1 If A1.5_2 Switch   A1.6 循环语句 A1.6_1 For">
+<meta name="keywords" content="OI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CatOI知识汇总">
+<meta property="og:url" content="http://Catty2014.github.io/2019/02/23/Know/index.html">
+<meta property="og:site_name" content="Pig2014的博客">
+<meta property="og:description" content="CatOI姿势知识汇总(Upd v1904)有遗漏，不足和错误之处请在评论区留言嗷  A Cpp语法与基础算法 A1 C基础语法 A1.1 程序的组成 A1.2 输入与输出 A1.3 文件读写 A1.4 变量与常量 A1.4_1 变量 A1.4_2 变量的使用 A1.4_3 常量   A1.5 判断语句 A1.5_1 If A1.5_2 Switch   A1.6 循环语句 A1.6_1 For">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-19T15:46:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CatOI知识汇总">
+<meta name="twitter:description" content="CatOI姿势知识汇总(Upd v1904)有遗漏，不足和错误之处请在评论区留言嗷  A Cpp语法与基础算法 A1 C基础语法 A1.1 程序的组成 A1.2 输入与输出 A1.3 文件读写 A1.4 变量与常量 A1.4_1 变量 A1.4_2 变量的使用 A1.4_3 常量   A1.5 判断语句 A1.5_1 If A1.5_2 Switch   A1.6 循环语句 A1.6_1 For">
+  
+  <meta name="summary" content="这是一个CDSS高一的蒟蒻OIer的Hexo博客!很高兴见到你嗷!">
+  <link rel="shortcut icon" href="/img/favicon2.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/avatarnew.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">Catty2014</h5>
+        <a href="mailto:18111431031@163.com" title="18111431031@163.com" class="mail">18111431031@163.com</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/">
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives">
+              <i class="icon icon-lg icon-archives"></i>
+              档案
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags">
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/Catty2014" target="_blank">
+              <i class="icon icon-lg icon-github"></i>
+              GitHub
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC"></a></p>
+  <p>Pig2014的博客 &copy; 2019</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">CatOI知识汇总</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">CatOI知识汇总</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2019-02-23T05:49:00.000Z" itemprop="datePublished" class="page-time">
+  2019-02-23
+</time>
+
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-Know" class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OI/">OI</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+            <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CatOI姿势知识汇总-Upd-v1904"><span class="post-toc-number">1.</span> <span class="post-toc-text">CatOI姿势知识汇总(Upd v1904)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#A-Cpp语法与基础算法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">A Cpp语法与基础算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#A1-C基础语法"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">A1 C基础语法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#A2-Cpp基础语法"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">A2 Cpp基础语法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#A3-基础算法"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">A3 基础算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#B-数据结构"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">B 数据结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#C-DP"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">C DP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#D-数论"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">D 数论</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#E-图论"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">E 图论</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#F-杂项"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">F 杂项</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#X-附加资料"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">X 附加资料</span></a></li></ol></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <!--font face="YaHei Consolas Hybrid" size=3-->
+<h1 id="CatOI姿势知识汇总-Upd-v1904"><a href="#CatOI姿势知识汇总-Upd-v1904" class="headerlink" title="CatOI姿势知识汇总(Upd v1904)"></a>CatOI<del>姿势</del>知识汇总<font color="#AAAAAA" size="2">(Upd v1904)</font></h1><p>有遗漏，不足和错误之处请在评论区留言嗷</p>
+<hr>
+<h2 id="A-Cpp语法与基础算法"><a href="#A-Cpp语法与基础算法" class="headerlink" title="A Cpp语法与基础算法"></a>A Cpp语法与基础算法</h2><ul>
+<li><h3 id="A1-C基础语法"><a href="#A1-C基础语法" class="headerlink" title="A1 C基础语法"></a>A1 C基础语法</h3><ul>
+<li>A1.1 程序的组成</li>
+<li>A1.2 输入与输出</li>
+<li>A1.3 文件读写</li>
+<li>A1.4 变量与常量<ul>
+<li>A1.4_1 变量</li>
+<li>A1.4_2 变量的使用</li>
+<li>A1.4_3 常量</li>
+</ul>
+</li>
+<li>A1.5 判断语句<ul>
+<li>A1.5_1 If</li>
+<li>A1.5_2 Switch</li>
+</ul>
+</li>
+<li>A1.6 循环语句<ul>
+<li>A1.6_1 For</li>
+<li>A1.6_2 While</li>
+<li>A1.6_3 Do…While</li>
+</ul>
+</li>
+<li>A1.7 数组<ul>
+<li>A1.7_1 一位数组</li>
+<li>A1.7_2 二维数组</li>
+<li>A1.7_3 多维数组</li>
+</ul>
+</li>
+<li>A1.7 函数<ul>
+<li>A1.7_1 函数的使用</li>
+<li>A1.7_2 函数的定义</li>
+<li>A1.7_3 函数的参数</li>
+<li>A1.7_4 递归</li>
+</ul>
+</li>
+<li>A1.8 字符数组&amp;字符串<font color="#AAAAAA" size="2">(C style)</font></li>
+<li>A1.9 头文件与宏定义<ul>
+<li>头文件#include</li>
+<li>宏定义#define</li>
+<li>定义声明typedef</li>
+</ul>
+</li>
+<li>A1.10 指针</li>
+</ul>
+</li>
+<li><h3 id="A2-Cpp基础语法"><a href="#A2-Cpp基础语法" class="headerlink" title="A2 Cpp基础语法"></a>A2 Cpp基础语法</h3><ul>
+<li>A2.1 更多的头文件</li>
+<li>A2.2 命名空间</li>
+<li>A2.3 多样的输入输出 <ul>
+<li>A2.3_Ex cin和cout的优化</li>
+</ul>
+</li>
+<li>A2.4 结构体</li>
+<li>A2.5 字符串<font color="#AAAAAA" size="2">(Cpp style)</font></li>
+<li>A2.6 STL<ul>
+<li>A2.6_1 vector</li>
+<li>A2.6_2 stack</li>
+<li>A2.6_3 queues</li>
+<li>A2.6_4 deque</li>
+<li>A2.6_5 priority_queue</li>
+<li>A2.6_6 map</li>
+<li>A2.6_7 set&amp;muitiset</li>
+<li>A2.6_8 头文件Algorithm</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="A3-基础算法"><a href="#A3-基础算法" class="headerlink" title="A3 基础算法"></a>A3 基础算法</h3><ul>
+<li>A3.1 枚举</li>
+<li>A3.2 模拟</li>
+<li>A3.3 递归与递推</li>
+<li>A3.4 贪心</li>
+<li>A3.5 分治<ul>
+<li>A3.5_1 二分查找</li>
+<li>A3.5_2 二分答案</li>
+<li>A3.5_3 三分</li>
+</ul>
+</li>
+<li>A3.6 搜索<font color="#009900" size="2">Lv.1</font><ul>
+<li>A3.6_1 DFS</li>
+<li>A3.6_2 BFS</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="B-数据结构"><a href="#B-数据结构" class="headerlink" title="B 数据结构"></a>B 数据结构</h2><ul>
+<li>B1 <font color="#00AA00">Easy</font><!-- font color=#AAAAAA size=2 >(NOIP)</font --><ul>
+<li>B1.1 栈<ul>
+<li>B1.1_1 栈</li>
+<li>B1.1_2 单调栈</li>
+</ul>
+</li>
+<li>B1.2 队列<ul>
+<li>B1.2_1 队列</li>
+<li>B1.2_2 单调队列</li>
+</ul>
+</li>
+<li>B1.3 树<font size="2" color="#AAAAAA">(Basic)</font><ul>
+<li>B1.3_1 树</li>
+<li>B1.3_2 二叉树</li>
+</ul>
+</li>
+<li>B1.4 二叉堆</li>
+<li>B1.5 优先队列</li>
+<li>B1.6 <del>冰茶姬</del> 并查集</li>
+</ul>
+</li>
+<li><p>B2 <font color="#DDDD11">Medium</font><!-- font color=#AAAAAA size=2>(Prov)</font --></p>
+<ul>
+<li>B2.1 树状数组</li>
+<li>B2.2 线段树</li>
+<li>B2.3 ST表</li>
+<li>B2.4 Trie树</li>
+<li>B2.5 Hash</li>
+<li>B2.6 DFS序</li>
+</ul>
+</li>
+<li><p>B3 <font color="#DD9900">HARD</font><!-- font color=#AAAAAA size=2>(NOI)</font --></p>
+<ul>
+<li>B3.1 线段树<font color="#880000">Ex</font><ul>
+<li>B3.1_1 权值线段树</li>
+<li>B3.1_2 最大子段和</li>
+<li>B3.1_3 gcd</li>
+<li>B3.1_4 均摊分析</li>
+<li>B3.1_5 01序列</li>
+</ul>
+</li>
+<li>B3.2 平衡树<ul>
+<li>B3.2_1 Treap</li>
+<li>B3.2_2 笛卡尔树</li>
+<li>B3.2_3 Splay</li>
+<li>B3.2_4 非旋Treap</li>
+<li>B3.2_5 替罪羊树</li>
+</ul>
+</li>
+<li>B3.3 树上信息维护<ul>
+<li>B3.3_1 树链剖分</li>
+<li>B3.3_2 树上差分</li>
+</ul>
+</li>
+<li>B3.4 LCA</li>
+<li>B3.5 持久化<ul>
+<li>B3.5_1 持久化链表</li>
+<li>B3.5_2 主席树   </li>
+</ul>
+</li>
+<li>B3.6 虚树 </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>B4 <font color="#EE0000">NIGHTMARE</font><!-- font color=#AAAAAA size=2>(????)</font --><ul>
+<li>B4.1 树套树</li>
+</ul>
+</li>
+</ul>
+<h2 id="C-DP"><a href="#C-DP" class="headerlink" title="C DP"></a>C DP</h2><ul>
+<li>C1 <font color="#00AA00">Easy</font> <ul>
+<li>C1.1 线性DP</li>
+<li>C1.2 背包DP</li>
+<li>C1.3 区间DP</li>
+</ul>
+</li>
+<li>C2 <font color="#DDDD11">Medium</font><ul>
+<li>C2.1 状压DP</li>
+<li>C2.2 <a href="/2019/04/06/C2-2-%E6%95%B0%E4%BD%8DDP/" title=" ==&gt; 数位DP">数位DP</a></li>
+<li>C2.3 <a href="/2019/04/06/C2-3-概率与期望DP/&quot;" title="==&gt; 概率&amp;期望DP">概率&amp;期望DP</a></li>
+<li>C2.4 树上DP</li>
+</ul>
+</li>
+<li>C3 <font color="#DD9900">HARD</font><ul>
+<li>C3.1 DP的优化<ul>
+<li>C3.1_1 <a href="/2019/04/12/C3-1-1-%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/" title="==&gt; 斜率优化">斜率优化</a></li>
+<li>C3.1_2 矩阵乘法优化</li>
+<li>C3.1_3 单调队列优化</li>
+<li>C3.1_4 倍增优化<ul>
+<li>C3.1_5 四边形不等式优化</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C3.2 插头DP&amp;轮廓线DP</li>
+<li>C3.3 仙人掌DP</li>
+</ul>
+</li>
+</ul>
+<!--
+   - C4 <font color=#EE0000>NIGHTMARE</font>
+     - <font color=#AAAAAA>(待补充...)</font>
+-->
+<h2 id="D-数论"><a href="#D-数论" class="headerlink" title="D 数论"></a>D 数论</h2><h2 id="E-图论"><a href="#E-图论" class="headerlink" title="E 图论"></a>E 图论</h2><h2 id="F-杂项"><a href="#F-杂项" class="headerlink" title="F 杂项"></a>F 杂项</h2><h2 id="X-附加资料"><a href="#X-附加资料" class="headerlink" title="X 附加资料"></a>X 附加资料</h2><ul>
+<li>X1 gcc(g++)编译详解</li>
+<li>X2 调试器使用</li>
+<li>X3 VIM使用简介</li>
+<li>X4 对拍</li>
+<li>X5 构造数据</li>
+<li>X6 骗分</li>
+<li>X7 Linux使用简介</li>
+</ul>
+<p>&lt;!—/font&gt;</p>
+
+
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://Catty2014.github.io/2019/02/23/Know/" target="_blank" rel="external">http://Catty2014.github.io/2019/02/23/Know/</a>
+                </p>
+                <footer><cite><a href="http://Catty2014.github.io">@Pig2014的博客</a></cite></footer>
+            </blockquote>
+            </div>
+            
+
+
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2019/04/06/C2-3-概率与期望DP/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">C2.3_概率与期望DP</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2019/02/17/WOJ2616-开根号-如何计算大整数的平方根？/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[WOJ2616 开根号]如何计算大整数的平方根？</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            <div id="git"></div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Sat Feb 23 2019 13:49:00 GMT+0800',
+    owner: "Catty2014",
+    repo: "Catty2014.github.io",
+    oauth: {
+    client_id: "126adb1056fb6218314f",
+    client_secret: "6964430ab40b4c4e21c0bb4ff1e406419d57d33f",
+    },
+})
+gitment.render('git')
+</script>
+
+            
+
+            
+        </div>
+    </div>
+</article>
+
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "CatOI知识汇总",
+    pic: "/img/avatarnew.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "http://Catty2014.github.io/2019/02/23/Know/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
