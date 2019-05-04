@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Pig2014的博客">
 <meta property="og:description" content="单调队列 前置知识: 队列 数组(滑稽) (还有谁不会吗)  可选:  STL:Queue,Deque DP  单调队列_介绍单调队列就是通过利用队列元素的单调性来降低时间复杂度的数据结构/算法 单调队列通常用于DP降维,当然也可以直接使用 下面我们通过例题讲解一下单调队列及其实现 例题_0 给出一个数字序列，请求出每一组连续C个数中最大和最小的数      Array Max Min     [">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-20T06:36:14.361Z">
+<meta property="og:updated_time" content="2019-04-24T09:12:52.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="B1.2_2 单调队列">
 <meta name="twitter:description" content="单调队列 前置知识: 队列 数组(滑稽) (还有谁不会吗)  可选:  STL:Queue,Deque DP  单调队列_介绍单调队列就是通过利用队列元素的单调性来降低时间复杂度的数据结构/算法 单调队列通常用于DP降维,当然也可以直接使用 下面我们通过例题讲解一下单调队列及其实现 例题_0 给出一个数字序列，请求出每一组连续C个数中最大和最小的数      Array Max Min     [">
@@ -109,10 +109,6 @@
         </div>
         
         
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
     </div>
 </header>
 <header class="content-header">
@@ -141,47 +137,10 @@
         <aside class="post-widget" id="post-widget">
 
             
-            <div class="post-share" id="post-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
-
-            
 
             
             <nav class="post-toc-wrap" id="post-toc">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#单调队列"><span class="post-toc-number">1.</span> <span class="post-toc-text">单调队列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前置知识"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前置知识:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单调队列-介绍"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">单调队列_介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例题-0"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">例题_0</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例题0-分析"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">例题0_分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单调队列-思路"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">单调队列_思路</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单调队列的小伙伴"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">单调队列的小伙伴</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#单调队列"><span class="post-toc-text">单调队列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前置知识"><span class="post-toc-text">前置知识:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单调队列-介绍"><span class="post-toc-text">单调队列_介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例题-0"><span class="post-toc-text">例题_0</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例题0-分析"><span class="post-toc-text">例题0_分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单调队列-思路"><span class="post-toc-text">单调队列_思路</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单调队列的小伙伴"><span class="post-toc-text">单调队列的小伙伴</span></a></li></ol></li></ol>
             </nav>
             
         </aside>
@@ -281,6 +240,13 @@
             
 <nav class="post-nav">
   
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2019/05/04/WOJ2820-Or-题解/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[WOJ2820 Or]题解</h4>
+      </a>
+    </div>
+  
 
   
     <div class="waves-block waves-effect next fr">
@@ -321,51 +287,6 @@ gitment.render('git')
   </main>
 <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-<script>
-var BLOG_SHARE = {
-    title: "B1.2_2 单调队列",
-    pic: "/img/avatarnew.jpg",
-    summary: document.getElementsByName('summary')[0].content,
-    url: "http://Catty2014.github.io/2019/04/20/B1-2-2-单调队列/index.html"
-};
-</script>
-<div class="global-share" id="global-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
-
 
 <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 

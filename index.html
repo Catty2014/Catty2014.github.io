@@ -108,10 +108,6 @@
         </div>
         
         
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
     </div>
 </header>
 <header class="content-header">
@@ -127,6 +123,52 @@
 
     <div class="container body-wrap">
       <ul class="post-list">
+  
+    <li class="post-list-item">
+        <article id="post-WOJ2820-Or-题解" class="article article-type-post" itemprop="blogPost">
+     
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/05/04/WOJ2820-Or-题解/">[WOJ2820 Or]题解</a>
+    </h3>
+  
+
+
+
+    <div class="post-meta">
+        <time datetime="2019-05-04T07:26:00.000Z" itemprop="datePublished" class="post-time">
+  2019-05-04
+</time>
+
+        
+
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+         本题要求每一个给定区间内按位或得到指定值的有效序列 
+ 而且是构造一个序列(可以有多组方案,由SPJ判断正确性) 
+ 所以我们可以初始化每一个数为INF($2^{29}-1$) 
+ (INF的二进制是0b 00111111 11111111 11111111 11111111) 
+ 然后对于每一个条件，对区间内的数进行处理： 
+  如果or的值(p[i])的二进制中某一位的值为0
+则区间内所有的
+    
+    
+        <a href="/2019/05/04/WOJ2820-Or-题解/" class="post-more waves-effect waves-button">
+            阅读全文-->
+        </a>
+    </div>
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OI/">OI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线段树/">线段树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li></ul>
+
+</article>
+
+    </li>
   
     <li class="post-list-item">
         <article id="post-B1-2-2-单调队列" class="article article-type-post" itemprop="blogPost">
@@ -492,51 +534,6 @@
   </main>
 <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-<script>
-var BLOG_SHARE = {
-    title: "Pig2014的博客",
-    pic: "/img/avatarnew.jpg",
-    summary: document.getElementsByName('summary')[0].content,
-    url: "http://Catty2014.github.io/index.html"
-};
-</script>
-<div class="global-share" id="global-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
-
 
 <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 

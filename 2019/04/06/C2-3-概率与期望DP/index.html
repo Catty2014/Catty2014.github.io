@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Pig2014的博客">
 <meta property="og:description" content="概率与期望DP 前置知识: DP  !概念讲解事件自然界中的各种现象可以分为三种：  √确定事件  ×不可能事件 ?随机事件  概率论和数理统计就是研究 随机事件 统计规律性的一门数学学科 随机事件随机事件是在随机试验中，可能出现也可能不出现，而在大量重复试验中具有某种规律性的事件叫做随机事件(简称事件)。 随机事件通常用大写英文字母 $A$,$B$,$C$ 等表示 随机试验随机试验是在相同条件">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-20T06:20:43.580Z">
+<meta property="og:updated_time" content="2019-04-24T09:19:06.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C2.3 概率与期望DP">
 <meta name="twitter:description" content="概率与期望DP 前置知识: DP  !概念讲解事件自然界中的各种现象可以分为三种：  √确定事件  ×不可能事件 ?随机事件  概率论和数理统计就是研究 随机事件 统计规律性的一门数学学科 随机事件随机事件是在随机试验中，可能出现也可能不出现，而在大量重复试验中具有某种规律性的事件叫做随机事件(简称事件)。 随机事件通常用大写英文字母 $A$,$B$,$C$ 等表示 随机试验随机试验是在相同条件">
@@ -109,10 +109,6 @@
         </div>
         
         
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
     </div>
 </header>
 <header class="content-header">
@@ -141,47 +137,10 @@
         <aside class="post-widget" id="post-widget">
 
             
-            <div class="post-share" id="post-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
-
-            
 
             
             <nav class="post-toc-wrap" id="post-toc">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#概率与期望DP"><span class="post-toc-number">1.</span> <span class="post-toc-text">概率与期望DP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前置知识"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前置知识:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念讲解"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">!概念讲解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事件"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">事件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#随机事件"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">随机事件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#随机试验"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">随机试验</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#随机事件的相关表述"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">随机事件的相关表述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#omega-样本点"><span class="post-toc-number">1.2.4.1.</span> <span class="post-toc-text">$\omega$:样本点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Omega-样本空间"><span class="post-toc-number">1.2.4.2.</span> <span class="post-toc-text">$\Omega$:样本空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#事件的发生"><span class="post-toc-number">1.2.4.3.</span> <span class="post-toc-text">事件的发生</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#必然事件与不可能事件"><span class="post-toc-number">1.2.4.4.</span> <span class="post-toc-text">必然事件与不可能事件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#事件的包含关系"><span class="post-toc-number">1.2.4.5.</span> <span class="post-toc-text">事件的包含关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#事件的和，积，差"><span class="post-toc-number">1.2.4.6.</span> <span class="post-toc-text">事件的和，积，差</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#互斥事件"><span class="post-toc-number">1.2.4.7.</span> <span class="post-toc-text">互斥事件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对立事件"><span class="post-toc-number">1.2.4.8.</span> <span class="post-toc-text">对立事件</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#未完待续"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">未完待续!</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#概率与期望DP"><span class="post-toc-text">概率与期望DP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前置知识"><span class="post-toc-text">前置知识:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念讲解"><span class="post-toc-text">!概念讲解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事件"><span class="post-toc-text">事件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#随机事件"><span class="post-toc-text">随机事件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#随机试验"><span class="post-toc-text">随机试验</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#随机事件的相关表述"><span class="post-toc-text">随机事件的相关表述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#omega-样本点"><span class="post-toc-text">$\omega$:样本点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Omega-样本空间"><span class="post-toc-text">$\Omega$:样本空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#事件的发生"><span class="post-toc-text">事件的发生</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#必然事件与不可能事件"><span class="post-toc-text">必然事件与不可能事件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#事件的包含关系"><span class="post-toc-text">事件的包含关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#事件的和，积，差"><span class="post-toc-text">事件的和，积，差</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#互斥事件"><span class="post-toc-text">互斥事件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对立事件"><span class="post-toc-text">对立事件</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#未完待续"><span class="post-toc-text">未完待续!</span></a></li></ol></li></ol>
             </nav>
             
         </aside>
@@ -219,6 +178,8 @@
 <h4 id="omega-样本点"><a href="#omega-样本点" class="headerlink" title="$\omega$:样本点"></a>$\omega$:样本点</h4><p>表示随机试验中每一个可能的实验结果</p>
 <hr>
 <h4 id="Omega-样本空间"><a href="#Omega-样本空间" class="headerlink" title="$\Omega$:样本空间"></a>$\Omega$:样本空间</h4><p>表示全体样本点组成的集合</p>
+<p>其元素称为基本事件</p>
+<p>根据定义，</p>
 <hr>
 <h4 id="事件的发生"><a href="#事件的发生" class="headerlink" title="事件的发生"></a>事件的发生</h4><p>当事件$A$所包含的基本事件中出现任意一个，就说事件$A$发生了，否则说事件$A$没有发生</p>
 <hr>
@@ -310,51 +271,6 @@ gitment.render('git')
   </main>
 <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-<script>
-var BLOG_SHARE = {
-    title: "C2.3 概率与期望DP",
-    pic: "/img/avatarnew.jpg",
-    summary: document.getElementsByName('summary')[0].content,
-    url: "http://Catty2014.github.io/2019/04/06/C2-3-概率与期望DP/index.html"
-};
-</script>
-<div class="global-share" id="global-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
-
 
 <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 
