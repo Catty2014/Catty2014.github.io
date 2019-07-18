@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>[WOJ3668 连通代价]题解 | Pig2014的博客 | 欢迎光临我的博客！~\(≧▽≦)/~啦啦啦！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="OI,题解">
+  <meta name="description" content="PORTAL 分析:本题要求计算连接空间两点的代价的最小值 其中: $Cost[a,b]=min( |X_a-X_b| , |Y_a-Y_b| , |Z_a-Z_b|)$     Point Range     30% $n&amp;lt;=2000$   100% $n&amp;lt;=100000$     $30 pts$: 30分做法可以枚举每一个点,计算和其他点的x,y,z距离取最小为权值。 然后取所有">
+<meta name="keywords" content="OI,题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[WOJ3668 连通代价]题解">
+<meta property="og:url" content="http://Catty2014.github.io/2019/06/15/WOJ3668-连通代价-题解/index.html">
+<meta property="og:site_name" content="Pig2014的博客">
+<meta property="og:description" content="PORTAL 分析:本题要求计算连接空间两点的代价的最小值 其中: $Cost[a,b]=min( |X_a-X_b| , |Y_a-Y_b| , |Z_a-Z_b|)$     Point Range     30% $n&amp;lt;=2000$   100% $n&amp;lt;=100000$     $30 pts$: 30分做法可以枚举每一个点,计算和其他点的x,y,z距离取最小为权值。 然后取所有">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-22T06:16:11.216Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[WOJ3668 连通代价]题解">
+<meta name="twitter:description" content="PORTAL 分析:本题要求计算连接空间两点的代价的最小值 其中: $Cost[a,b]=min( |X_a-X_b| , |Y_a-Y_b| , |Z_a-Z_b|)$     Point Range     30% $n&amp;lt;=2000$   100% $n&amp;lt;=100000$     $30 pts$: 30分做法可以枚举每一个点,计算和其他点的x,y,z距离取最小为权值。 然后取所有">
+  
+  <meta name="summary" content="这是一个CDSS高一的蒟蒻OIer的Hexo博客!很高兴见到你嗷!">
+  <link rel="shortcut icon" href="/img/favicon2.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/avatarnew.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">Catty2014</h5>
+        <a href="mailto:18111431031@163.com" title="18111431031@163.com" class="mail">18111431031@163.com</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/">
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives">
+              <i class="icon icon-lg icon-archives"></i>
+              档案
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags">
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/Catty2014" target="_blank">
+              <i class="icon icon-lg icon-github"></i>
+              GitHub
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC"></a></p>
+  <p>Pig2014的博客 &copy; 2019</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">[WOJ3668 连通代价]题解</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">[WOJ3668 连通代价]题解</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2019-06-15T07:58:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-15
+</time>
+
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-WOJ3668-连通代价-题解" class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OI/">OI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#分析"><span class="post-toc-text">分析:</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Code"><span class="post-toc-text">Code:</span></a></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <p><a href="http://192.168.110.251/problempage.php?problem_id=3668" target="_blank" rel="noopener">PORTAL</a></p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析:"></a>分析:</h1><p>本题要求计算连接空间两点的代价的最小值</p>
+<p>其中:</p>
+<p>$Cost[a,b]=min( |X_a-X_b| , |Y_a-Y_b| , |Z_a-Z_b|)$</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Point</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30%</td>
+<td>$n&lt;=2000$</td>
+</tr>
+<tr>
+<td>100%</td>
+<td>$n&lt;=100000$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>$30 pts$:</p>
+<p>30分做法可以枚举每一个点,计算和其他点的x,y,z距离取最小为权值。</p>
+<p>然后取所有答案的最小值。</p>
+<p>或者全部暴力加边后Prim</p>
+<p>预估效率:$O(n^2)$</p>
+<p>$Perfect$:</p>
+<p>30pts的算法效率低在建立了很多没有<del>卵</del>用的边</p>
+<p>所以要想办法去掉/不建立那些边</p>
+<p>所以正解是对所有点x,y,z进行关键字排序，每次排序后对x/y/z相邻的点连边</p>
+<p>然后跑一发最小生成树(Kruscal/Prim,下面用的是Kruscal)</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h1><blockquote>
+<p>//没有压行</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/****************************************</span></span><br><span class="line"><span class="comment"> * W3668 连通代价</span></span><br><span class="line"><span class="comment"> * Kruscal+Union Set</span></span><br><span class="line"><span class="comment"> ****************************************/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">133333</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> f[N];<span class="comment">//Point:Father</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/****************************************</span></span><br><span class="line"><span class="comment"> * Point Information</span></span><br><span class="line"><span class="comment"> ****************************************/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x;<span class="comment">//x</span></span><br><span class="line">    <span class="keyword">int</span> y;<span class="comment">//y</span></span><br><span class="line">    <span class="keyword">int</span> z;<span class="comment">//z</span></span><br><span class="line">    <span class="keyword">int</span> id;<span class="comment">//id</span></span><br><span class="line">&#125;p[N];</span><br><span class="line"></span><br><span class="line"><span class="comment">/****************************************</span></span><br><span class="line"><span class="comment"> * Edge Information</span></span><br><span class="line"><span class="comment"> ****************************************/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> f;<span class="comment">//from</span></span><br><span class="line">    <span class="keyword">int</span> t;<span class="comment">//to</span></span><br><span class="line">    <span class="keyword">int</span> v;<span class="comment">//value</span></span><br><span class="line">&#125;e[(<span class="number">4</span>*N)];</span><br><span class="line"><span class="keyword">int</span> num;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    num++;</span><br><span class="line">    e[num].f=u;</span><br><span class="line">    e[num].t=v;</span><br><span class="line">    e[num].v=w;</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ffa</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (f[x]==x)?x:f[x]=ffa(f[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mrg</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fx=ffa(x);</span><br><span class="line">    <span class="keyword">int</span> fy=ffa(y);</span><br><span class="line">    <span class="keyword">if</span>(fx!=fy) f[fx]=fy;</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="comment">/****************************************</span></span><br><span class="line"><span class="comment"> * Sort Functions</span></span><br><span class="line"><span class="comment"> ****************************************/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Compare_x</span><span class="params">(Point a,Point b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.x&lt;b.x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Compare_y</span><span class="params">(Point a,Point b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.y&lt;b.y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Compare_z</span><span class="params">(Point a,Point b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.z&lt;b.z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Compare_e</span><span class="params">(Edge a,Edge b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.v&lt;b.v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ksk</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::sort(e+<span class="number">1</span>,e+num+<span class="number">1</span>,Compare_e);</span><br><span class="line">    <span class="keyword">int</span> line=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=num;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> faf=ffa(e[i].f);</span><br><span class="line">        <span class="keyword">int</span> fat=ffa(e[i].t);</span><br><span class="line">        <span class="keyword">if</span>(faf!=fat)</span><br><span class="line">        &#123;</span><br><span class="line">            mrg(faf,fat);</span><br><span class="line">            line++;</span><br><span class="line">            ans+=e[i].v;</span><br><span class="line">            <span class="keyword">if</span>(line==n<span class="number">-1</span>) <span class="keyword">return</span> ans;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifdef</span> FILE_OUT</span></span><br><span class="line">    freopen(<span class="string">"tmp.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"tmp.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;p[i].x,&amp;p[i].y,&amp;p[i].z);</span><br><span class="line">        p[i].id=i;</span><br><span class="line">        f[i]=i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">std</span>::sort(p+<span class="number">1</span>,p+n+<span class="number">1</span>,Compare_x);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        add(p[i].id,p[i+<span class="number">1</span>].id,p[i+<span class="number">1</span>].x-p[i].x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">std</span>::sort(p+<span class="number">1</span>,p+n+<span class="number">1</span>,Compare_y);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        add(p[i].id,p[i+<span class="number">1</span>].id,p[i+<span class="number">1</span>].y-p[i].y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">std</span>::sort(p+<span class="number">1</span>,p+n+<span class="number">1</span>,Compare_z);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        add(p[i].id,p[i+<span class="number">1</span>].id,p[i+<span class="number">1</span>].z-p[i].z);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ksk());</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://Catty2014.github.io/2019/06/15/WOJ3668-连通代价-题解/" target="_blank" rel="external">http://Catty2014.github.io/2019/06/15/WOJ3668-连通代价-题解/</a>
+                </p>
+                <footer><cite><a href="http://Catty2014.github.io">@Pig2014的博客</a></cite></footer>
+            </blockquote>
+            </div>
+            
+
+
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2019/07/17/ArchLinux-从入门到入坟/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">ArchLinux:从入门到入坟</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2019/05/11/hello-world/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Hello World</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            <div id="git"></div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Sat Jun 15 2019 15:58:00 GMT+0800',
+    owner: "Catty2014",
+    repo: "Catty2014.github.io",
+    oauth: {
+    client_id: "126adb1056fb6218314f",
+    client_secret: "6964430ab40b4c4e21c0bb4ff1e406419d57d33f",
+    },
+})
+gitment.render('git')
+</script>
+
+            
+
+            
+        </div>
+    </div>
+</article>
+
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

@@ -9,19 +9,19 @@
   <meta name="theme-color" content="#3F51B5">
   
   
-  <meta name="keywords" content="OI,题解,线段树">
-  <meta name="description" content="本题要求每一个给定区间内按位或得到指定值的有效序列 而且是构造一个序列(可以有多组方案,由SPJ判断正确性) 所以我们可以初始化每一个数为INF($2^{29}-1$) (INF的二进制是0b 00111111 11111111 11111111 11111111) 然后对于每一个条件，对区间内的数进行处理： 如果or的值(p[i])的二进制中某一位的值为0 则区间内所有的值对应二进制位都为0 如">
-<meta name="keywords" content="OI,题解,线段树">
+  <meta name="keywords" content="线段树,OI,题解">
+  <meta name="description" content="PORTAL 本题要求每一个给定区间内按位或得到指定值的有效序列 而且是构造一个序列(可以有多组方案,由SPJ判断正确性) 所以我们可以初始化每一个数为INF($2^{29}-1$) (INF的二进制是0b 00111111 11111111 11111111 11111111) 然后对于每一个条件，对区间内的数进行处理： 如果or的值(p[i])的二进制中某一位的值为0 则区间内所有的值对应二进">
+<meta name="keywords" content="线段树,OI,题解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[WOJ2820 Or]题解">
 <meta property="og:url" content="http://Catty2014.github.io/2019/05/04/WOJ2820-Or-题解/index.html">
 <meta property="og:site_name" content="Pig2014的博客">
-<meta property="og:description" content="本题要求每一个给定区间内按位或得到指定值的有效序列 而且是构造一个序列(可以有多组方案,由SPJ判断正确性) 所以我们可以初始化每一个数为INF($2^{29}-1$) (INF的二进制是0b 00111111 11111111 11111111 11111111) 然后对于每一个条件，对区间内的数进行处理： 如果or的值(p[i])的二进制中某一位的值为0 则区间内所有的值对应二进制位都为0 如">
+<meta property="og:description" content="PORTAL 本题要求每一个给定区间内按位或得到指定值的有效序列 而且是构造一个序列(可以有多组方案,由SPJ判断正确性) 所以我们可以初始化每一个数为INF($2^{29}-1$) (INF的二进制是0b 00111111 11111111 11111111 11111111) 然后对于每一个条件，对区间内的数进行处理： 如果or的值(p[i])的二进制中某一位的值为0 则区间内所有的值对应二进">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-11T13:50:32.697Z">
+<meta property="og:updated_time" content="2019-07-17T08:28:59.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[WOJ2820 Or]题解">
-<meta name="twitter:description" content="本题要求每一个给定区间内按位或得到指定值的有效序列 而且是构造一个序列(可以有多组方案,由SPJ判断正确性) 所以我们可以初始化每一个数为INF($2^{29}-1$) (INF的二进制是0b 00111111 11111111 11111111 11111111) 然后对于每一个条件，对区间内的数进行处理： 如果or的值(p[i])的二进制中某一位的值为0 则区间内所有的值对应二进制位都为0 如">
+<meta name="twitter:description" content="PORTAL 本题要求每一个给定区间内按位或得到指定值的有效序列 而且是构造一个序列(可以有多组方案,由SPJ判断正确性) 所以我们可以初始化每一个数为INF($2^{29}-1$) (INF的二进制是0b 00111111 11111111 11111111 11111111) 然后对于每一个条件，对区间内的数进行处理： 如果or的值(p[i])的二进制中某一位的值为0 则区间内所有的值对应二进">
   
   <meta name="summary" content="这是一个CDSS高一的蒟蒻OIer的Hexo博客!很高兴见到你嗷!">
   <link rel="shortcut icon" href="/img/favicon2.ico">
@@ -148,7 +148,8 @@
         <div class="post-main">
 
             <div class="post-content" id="post-content" itemprop="postContent">
-            <p>本题要求每一个给定区间内按位或得到指定值的有效序列</p>
+            <p><a href="http://192.168.110.251/problempage.php?problem_id=2820" target="_blank" rel="noopener">PORTAL</a></p>
+<p>本题要求每一个给定区间内按位或得到指定值的有效序列</p>
 <p>而且是构造一个序列(可以有多组方案,由SPJ判断正确性)</p>
 <p>所以我们可以初始化每一个数为INF($2^{29}-1$)</p>
 <p>(INF的二进制是0b 00111111 11111111 11111111 11111111)</p>
