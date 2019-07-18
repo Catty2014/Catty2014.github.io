@@ -56,7 +56,7 @@ mathjax:
 archive_yearly: true
 
 #是否开启分享
-share: true
+share: false
 
 #是否开启打赏，关闭 reward: false
 reward: false
@@ -73,7 +73,7 @@ hideMenu: true
 #是否开启toc
 #toc: false
 toc:
-  list_number: true  # 是否显示数字排序
+  list_number: false  # 是否显示数字排序
 
 #站长统计，如要开启，输入CNZZ站点id，如 cnzz: 1255152447
 cnzz: false
