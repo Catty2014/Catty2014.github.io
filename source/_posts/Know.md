@@ -1,11 +1,11 @@
-title: CatOI知识汇总
+title: OI知识_汇总
 tags:
   - OI
 date: 2019-02-23 13:49:00
 ---
 <!--font face="YaHei Consolas Hybrid" size=3-->
 
-# CatOI~~姿势~~知识汇总<font color=#AAAAAA size=2>(Upd v1904)</font>
+# CatOI~~姿势~~知识汇总<font color=#AAAAAA size=2>(Upd v1907)</font>
 
 有遗漏，不足和错误之处请在评论区留言嗷
 
@@ -78,7 +78,7 @@ date: 2019-02-23 13:49:00
    -  B1.2 队列
       -  B1.2_1 队列
       -  B1.2_2 [单调队列](http://localhost:4000/2019/04/20/B1-2-2-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/ "==> 单调队列")
-      -  B1.3 树<font size=2 color=#AAAAAA>(Basic)</font>
+   -  B1.3 树<font size=2 color=#AAAAAA>(Basic)</font>
       -  B1.3_1 树
       -  B1.3_2 二叉树
    -  B1.4 二叉堆
@@ -114,10 +114,12 @@ date: 2019-02-23 13:49:00
       -  B3.5_1 持久化链表
       -  B3.5_2 主席树   
    - B3.6 虚树 
+   - B3.7 [基环树](/2019/07/31/基环树/ "基♂环树")
 
-
- - B4 <font color=#EE0000>NIGHTMARE</font><!-- font color=#AAAAAA size=2>(????)</font -->
+<!--
+ - B4 <font color=#EE0000>NIGHTMARE</font>< font color=#AAAAAA size=2>(????)</font 
    - B4.1 树套树
+   -->
 
 ## C DP
    - C1 <font color=#00AA00>Easy</font> 
@@ -153,7 +155,7 @@ date: 2019-02-23 13:49:00
 ## X 附加资料
 
   - X1 gcc(g++)编译详解
-  - X2 调试器(gdb)使用
+  - X2 [调试器(gdb)使用](https://www.taobao.com "你在想屁吃")
   - X3 VIM使用简介
   - X4 对拍
   - X5 构造数据
