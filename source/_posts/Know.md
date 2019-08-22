@@ -1,3 +1,4 @@
+---
 title: OI知识_汇总
 tags:
   - OI
@@ -44,7 +45,7 @@ date: 2019-02-23 13:49:00
  - ### A2 Cpp基础语法
    - A2.1 更多的头文件
    - A2.2 命名空间
-   - A2.3 多样的输入输出 
+   - A2.3 多样的输入输出
      - A2.3_Ex cin和cout的优化
    - A2.4 结构体
    - A2.5 字符串<font color=#AAAAAA size=2>(Cpp style)</font>
@@ -77,7 +78,7 @@ date: 2019-02-23 13:49:00
       -  B1.1_2 单调栈
    -  B1.2 队列
       -  B1.2_1 队列
-      -  B1.2_2 [单调队列](http://localhost:4000/2019/04/20/B1-2-2-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/ "==> 单调队列")
+      -  B1.2_2 [单调队列](/2019/04/20/B1-2-2-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/ "==> 单调队列")
    -  B1.3 树<font size=2 color=#AAAAAA>(Basic)</font>
       -  B1.3_1 树
       -  B1.3_2 二叉树
@@ -112,17 +113,17 @@ date: 2019-02-23 13:49:00
    - B3.4 LCA
    - B3.5 持久化
       -  B3.5_1 持久化链表
-      -  B3.5_2 主席树   
-   - B3.6 虚树 
+      -  B3.5_2 主席树
+   - B3.6 虚树
    - B3.7 [基环树](/2019/07/31/基环树/ "基♂环树")
 
 <!--
- - B4 <font color=#EE0000>NIGHTMARE</font>< font color=#AAAAAA size=2>(????)</font 
+ - B4 <font color=#EE0000>NIGHTMARE</font>< font color=#AAAAAA size=2>(????)</font
    - B4.1 树套树
    -->
 
 ## C DP
-   - C1 <font color=#00AA00>Easy</font> 
+   - C1 <font color=#00AA00>Easy</font>
      - C1.1 线性DP
      - C1.2 背包DP
      - C1.3 区间DP
@@ -137,10 +138,10 @@ date: 2019-02-23 13:49:00
           - C3.1_2 矩阵乘法优化
           - C3.1_3 单调队列优化
           - C3.1_4 倍增优化
-      	  - C3.1_5 四边形不等式优化
+          - C3.1_5 四边形不等式优化
      - C3.2 插头DP&轮廓线DP
      - C3.3 仙人掌DP
-     
+
 <!--
    - C4 <font color=#EE0000>NIGHTMARE</font>
      - <font color=#AAAAAA>(待补充...)</font>

@@ -35,3 +35,36 @@ C:\Program Files\CodeBlocks\MinGW64\include
 #include "testlib.h"
 ```
 
+## Testlib通用函数/状态/变量等
+(Note:部分资料来自[OIWiki](https://oi-wiki.org))
+
+### 通用状态
+
+|结果|状态名|含义|
+|:--|:--|:--|
+|Accepted|`_ok`|答案正确|
+|Wrong Answer|`_wa`|答案错误|
+|Presentation error|`_pe`|格式错误[1]|
+|Partially Correct|`_pc(score)`|答案部分正确,获得score%的分数|
+|Fail|`_fail`|程序内部错误,也可以是其他情况[2]|
+
+\[1]:需要注意的是,大部分OJ并不区分WA和PE
+
+\[2]:也可以表示输入不合法(validator),输出有误或选手输出比答案更优
+
+### 通用对象
+|对象|含义|
+|:--|:--|
+|inf|输入流|
+|ouf|输出流|
+|ans|答案流|
+
+### 通用函数
+
+非成员函数:
+
+|函数|含义|
+|:--|:--|
+|`void registerTestlibCmd(int argc,char* argv[])`|注册程序为checker(比较器,即SPJ)|
+|`void registerInteraction(int argc,char* argv[])`|注册程序为interactor(交互器)|
+
