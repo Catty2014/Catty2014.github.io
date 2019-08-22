@@ -3,28 +3,25 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>X2 调试器(gdb)的使用 | Pig2014的博客 | 欢迎光临我的博客！~\(≧▽≦)/~啦啦啦！</title>
+  <title>X9 SPJ(testlib ver.)的使用 | Pig2014的博客 | 欢迎光临我的博客！~\(≧▽≦)/~啦啦啦！</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
   
   
-  <meta name="keywords" content="OI,gdb,调试">
-  <meta name="description" content="GDB的食用 gdb是OI赛事中的调试利器 可以配合各种IDE及编辑器例如Dev-Cpp (虽然Dev-Cpp的调试是个残废) ,CLion,VSCode,EmacsOS等食用  (Vim下还没有一个与GDB契合完美的插件,所以不算在内。如果有的话,能否安利一下?   不过这里主要讲的是命令行操作 因为命令行使用范围广泛(雾 而且有图形界面的IDE都可以用gdb命令 如何运行Sample:ZSH如">
-<meta name="keywords" content="OI,gdb,调试">
+  <meta name="keywords" content>
+  <meta name="description" content="如何正确使用SPJ 啊当然这里讲的是使用testlib 因为手写的SPJ容易炸锅… 下载testlib.htestlib.h是此处要讲到的SPJ实现的根本所在 其中包含了testlib的完整实现 对于Windows,请在此处下载（复制）到gcc的include目录 一般是%PATH_OF_GCC%/include 例如:123D:\gcc\includeC:\Program Files\Dev-C">
+<meta name="keywords" content="blank">
 <meta property="og:type" content="article">
-<meta property="og:title" content="X2 调试器(gdb)的使用">
-<meta property="og:url" content="http://Catty2014.github.io/2019/07/31/X2-调试器-gdb-的使用/index.html">
+<meta property="og:title" content="X9 SPJ(testlib ver.)的使用">
+<meta property="og:url" content="http://Catty2014.github.io/2019/08/03/X9-SPJ-testlib-ver-的使用/index.html">
 <meta property="og:site_name" content="Pig2014的博客">
-<meta property="og:description" content="GDB的食用 gdb是OI赛事中的调试利器 可以配合各种IDE及编辑器例如Dev-Cpp (虽然Dev-Cpp的调试是个残废) ,CLion,VSCode,EmacsOS等食用  (Vim下还没有一个与GDB契合完美的插件,所以不算在内。如果有的话,能否安利一下?   不过这里主要讲的是命令行操作 因为命令行使用范围广泛(雾 而且有图形界面的IDE都可以用gdb命令 如何运行Sample:ZSH如">
+<meta property="og:description" content="如何正确使用SPJ 啊当然这里讲的是使用testlib 因为手写的SPJ容易炸锅… 下载testlib.htestlib.h是此处要讲到的SPJ实现的根本所在 其中包含了testlib的完整实现 对于Windows,请在此处下载（复制）到gcc的include目录 一般是%PATH_OF_GCC%/include 例如:123D:\gcc\includeC:\Program Files\Dev-C">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/31/eNrT1J.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/31/eNsucj.png">
-<meta property="og:updated_time" content="2019-08-22T04:06:19.649Z">
+<meta property="og:updated_time" content="2019-08-22T03:52:21.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="X2 调试器(gdb)的使用">
-<meta name="twitter:description" content="GDB的食用 gdb是OI赛事中的调试利器 可以配合各种IDE及编辑器例如Dev-Cpp (虽然Dev-Cpp的调试是个残废) ,CLion,VSCode,EmacsOS等食用  (Vim下还没有一个与GDB契合完美的插件,所以不算在内。如果有的话,能否安利一下?   不过这里主要讲的是命令行操作 因为命令行使用范围广泛(雾 而且有图形界面的IDE都可以用gdb命令 如何运行Sample:ZSH如">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/31/eNrT1J.png">
+<meta name="twitter:title" content="X9 SPJ(testlib ver.)的使用">
+<meta name="twitter:description" content="如何正确使用SPJ 啊当然这里讲的是使用testlib 因为手写的SPJ容易炸锅… 下载testlib.htestlib.h是此处要讲到的SPJ实现的根本所在 其中包含了testlib的完整实现 对于Windows,请在此处下载（复制）到gcc的include目录 一般是%PATH_OF_GCC%/include 例如:123D:\gcc\includeC:\Program Files\Dev-C">
   
   <meta name="summary" content="这是一个CDSS高一的蒟蒻OIer的Hexo博客!很高兴见到你嗷!">
   <link rel="shortcut icon" href="/img/favicon2.ico">
@@ -99,7 +96,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">X2 调试器(gdb)的使用</div>
+        <div class="flex-col header-title ellipsis">X9 SPJ(testlib ver.)的使用</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -116,11 +113,11 @@
 </header>
 <header class="content-header">
   <div class="container">
-    <h1 class="author">X2 调试器(gdb)的使用</h1>
+    <h1 class="author">X9 SPJ(testlib ver.)的使用</h1>
     <h5 class="subtitle">
         
-            <time datetime="2019-07-31T12:18:00.000Z" itemprop="datePublished" class="page-time">
-  2019-07-31
+            <time datetime="2019-08-03T08:16:40.000Z" itemprop="datePublished" class="page-time">
+  2019-08-03
 </time>
 
 
@@ -130,12 +127,10 @@
 </header>
 
     <div class="container body-wrap">
-      <article id="post-X2-调试器-gdb-的使用" 
+      <article id="post-X9-SPJ-testlib-ver-的使用" 
   class="article article-type-post" itemprop="blogPost">
     <div class="post-meta flex-row">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OI/">OI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gdb/">gdb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/调试/">调试</a></li></ul>
-
     </div>
     <div class="post-body">
         <aside class="post-widget" id="post-widget">
@@ -144,7 +139,7 @@
 
             
             <nav class="post-toc-wrap" id="post-toc">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#GDB的食用"><span class="post-toc-text">GDB的食用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#如何运行"><span class="post-toc-text">如何运行</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sample-ZSH"><span class="post-toc-text">Sample:ZSH</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#VSCode"><span class="post-toc-text">VSCode</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#命令简介"><span class="post-toc-text">命令简介</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#如何正确使用SPJ"><span class="post-toc-text">如何正确使用SPJ</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载testlib-h"><span class="post-toc-text">下载testlib.h</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Testlib通用函数-状态-变量等"><span class="post-toc-text">Testlib通用函数/状态/变量等</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通用状态"><span class="post-toc-text">通用状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通用对象"><span class="post-toc-text">通用对象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通用函数"><span class="post-toc-text">通用函数</span></a></li></ol></li></ol></li></ol>
             </nav>
             
         </aside>
@@ -152,62 +147,99 @@
         <div class="post-main">
 
             <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="GDB的食用"><a href="#GDB的食用" class="headerlink" title="GDB的食用"></a>GDB的食用</h1><hr>
-<p>gdb是OI赛事中的调试利器</p>
-<p>可以配合各种IDE及编辑器例如Dev-Cpp <del>(虽然Dev-Cpp的调试是个残废)</del> ,CLion,VSCode,Emacs<del>OS</del>等食用</p>
-<font color="aaaaaa">
-(Vim下还没有一个与GDB契合完美的插件,所以不算在内。如果有的话,能否安利一下?
-</font>
-
-<p>不过这里主要讲的是命令行操作</p>
-<p>因为命令行使用范围广泛(雾</p>
-<p>而且有图形界面的IDE都可以用gdb命令</p>
-<h1 id="如何运行"><a href="#如何运行" class="headerlink" title="如何运行"></a>如何运行</h1><h2 id="Sample-ZSH"><a href="#Sample-ZSH" class="headerlink" title="Sample:ZSH"></a>Sample:ZSH</h2><p>如图,在命令行内输入”gdb “+程序名就可以调试了</p>
-<p>程序名需写全,且编译时要加上<code>-g</code>参数</p>
-<p>(请自行忽略背景</p>
-<p><img src="https://s2.ax1x.com/2019/07/31/eNrT1J.png" alt="eNrT1J.png"></p>
-<h2 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h2><p>在配置好调试选项后就可以选择左方工具栏的DEBUG选项调试了</p>
-<p><img src="https://s2.ax1x.com/2019/07/31/eNsucj.png" alt="eNsucj.png"></p>
-<h1 id="命令简介"><a href="#命令简介" class="headerlink" title="命令简介"></a>命令简介</h1><font color="66ccff">\*下列命令均可以简写(如break => b),只要不发生歧义<br>
-  \*()中的为可选参数,[]中的为必选参数
-</font>
-
-<div class="table-container">
+            <h1 id="如何正确使用SPJ"><a href="#如何正确使用SPJ" class="headerlink" title="如何正确使用SPJ"></a>如何正确使用SPJ</h1><hr>
+<p>啊当然这里讲的是使用testlib</p>
+<p>因为手写的SPJ容易炸锅…</p>
+<h2 id="下载testlib-h"><a href="#下载testlib-h" class="headerlink" title="下载testlib.h"></a>下载testlib.h</h2><p>testlib.h是此处要讲到的SPJ实现的根本所在</p>
+<p>其中包含了testlib的完整实现</p>
+<p><strong>对于Windows</strong>,请在<a href="https://github.com/MikeMirzayanov/testlib/blob/master/testlib.h" target="_blank" rel="noopener">此处</a>下载（复制）到gcc的include目录</p>
+<p>一般是<code>%PATH_OF_GCC%/include</code></p>
+<p>例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">D:\gcc\include</span><br><span class="line">C:\Program Files\Dev-Cpp\MinGW64\include</span><br><span class="line">C:\Program Files\CodeBlocks\MinGW64\include</span><br></pre></td></tr></table></figure></p>
+<p><strong>对于GNU/Linux</strong>,<strong>OS X</strong>:<br>将其放在/usr/include</p>
+<p><strong>通用方法</strong>:放在SPJ所在目录</p>
+<p>注意此时要用<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"testlib.h"</span></span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Testlib通用函数-状态-变量等"><a href="#Testlib通用函数-状态-变量等" class="headerlink" title="Testlib通用函数/状态/变量等"></a>Testlib通用函数/状态/变量等</h2><p>(Note:部分资料来自<a href="https://oi-wiki.org" target="_blank" rel="noopener">OIWiki</a>)</p>
+<h3 id="通用状态"><a href="#通用状态" class="headerlink" title="通用状态"></a>通用状态</h3><div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:left">命令</th>
-<th style="text-align:left">说明</th>
+<th style="text-align:left">结果</th>
+<th style="text-align:left">状态名</th>
+<th style="text-align:left">含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">list (line)</td>
-<td style="text-align:left">显示(line)上下5行的源码</td>
+<td style="text-align:left">Accepted</td>
+<td style="text-align:left"><code>_ok</code></td>
+<td style="text-align:left">答案正确</td>
 </tr>
 <tr>
-<td style="text-align:left">break [line]</td>
-<td style="text-align:left">在[line]行设置一个断点</td>
+<td style="text-align:left">Wrong Answer</td>
+<td style="text-align:left"><code>_wa</code></td>
+<td style="text-align:left">答案错误</td>
 </tr>
 <tr>
-<td style="text-align:left">info</td>
-<td style="text-align:left">描述程序的状态</td>
+<td style="text-align:left">Presentation error</td>
+<td style="text-align:left"><code>_pe</code></td>
+<td style="text-align:left">格式错误[1]</td>
 </tr>
 <tr>
-<td style="text-align:left">run</td>
-<td style="text-align:left">运行程序</td>
+<td style="text-align:left">Partially Correct</td>
+<td style="text-align:left"><code>_pc(score)</code></td>
+<td style="text-align:left">答案部分正确,获得score%的分数</td>
 </tr>
 <tr>
-<td style="text-align:left">display</td>
-<td style="text-align:left">跟踪变量,每一次停下(如遇到断点或Ctrl-C)时输出变量的值</td>
+<td style="text-align:left">Fail</td>
+<td style="text-align:left"><code>_fail</code></td>
+<td style="text-align:left">程序内部错误,也可以是其他情况[2]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>[1]:需要注意的是,大部分OJ并不区分WA和PE</p>
+<p>[2]:也可以表示输入不合法(validator),输出有误或选手输出比答案更优</p>
+<h3 id="通用对象"><a href="#通用对象" class="headerlink" title="通用对象"></a>通用对象</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">对象</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">inf</td>
+<td style="text-align:left">输入流</td>
 </tr>
 <tr>
-<td style="text-align:left">step</td>
-<td style="text-align:left">执行下一条语句,有函数时跳入函数</td>
+<td style="text-align:left">ouf</td>
+<td style="text-align:left">输出流</td>
 </tr>
 <tr>
-<td style="text-align:left">next</td>
-<td style="text-align:left">执行下一条语句,有函数时<strong>不</strong>跳入函数</td>
+<td style="text-align:left">ans</td>
+<td style="text-align:left">答案流</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="通用函数"><a href="#通用函数" class="headerlink" title="通用函数"></a>通用函数</h3><p>非成员函数:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>void registerTestlibCmd(int argc,char* argv[])</code></td>
+<td style="text-align:left">注册程序为checker(比较器,即SPJ)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>void registerInteraction(int argc,char* argv[])</code></td>
+<td style="text-align:left">注册程序为interactor(交互器)</td>
 </tr>
 </tbody>
 </table>
@@ -219,7 +251,7 @@
             <blockquote>
                 <p>
                 本文地址：
-                <a href="http://Catty2014.github.io/2019/07/31/X2-调试器-gdb-的使用/" target="_blank" rel="external">http://Catty2014.github.io/2019/07/31/X2-调试器-gdb-的使用/</a>
+                <a href="http://Catty2014.github.io/2019/08/03/X9-SPJ-testlib-ver-的使用/" target="_blank" rel="external">http://Catty2014.github.io/2019/08/03/X9-SPJ-testlib-ver-的使用/</a>
                 </p>
                 <footer><cite><a href="http://Catty2014.github.io">@Pig2014的博客</a></cite></footer>
             </blockquote>
@@ -230,19 +262,12 @@
             
 <nav class="post-nav">
   
-    <div class="waves-block waves-effect prev fl">
-      <a href="/2019/08/03/X9-SPJ-testlib-ver-的使用/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">X9 SPJ(testlib ver.)的使用</h4>
-      </a>
-    </div>
-  
 
   
     <div class="waves-block waves-effect next fr">
-      <a href="/2019/07/31/B3.7 基环树/" id="post-next" class="post-nav-link">
+      <a href="/2019/07/31/X2-调试器-gdb-的使用/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">B3.7 基环树</h4>
+        <h4 class="title">X2 调试器(gdb)的使用</h4>
       </a>
     </div>
   
@@ -255,7 +280,7 @@
 <script src="https://jjeejj.github.io/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Wed Jul 31 2019 20:18:00 GMT+0800',
+    id: 'Sat Aug 03 2019 16:16:40 GMT+0800',
     owner: "Catty2014",
     repo: "Catty2014.github.io",
     oauth: {
