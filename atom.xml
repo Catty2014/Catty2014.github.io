@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Catty2014.github.io/"/>
-  <updated>2019-08-22T03:52:21.830Z</updated>
+  <updated>2019-08-23T01:50:47.539Z</updated>
   <id>http://Catty2014.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[WOJ3116 诚哥的逆袭5]题解</title>
+    <link href="http://Catty2014.github.io/2019/08/23/WOJ3116-%E8%AF%9A%E5%93%A5%E7%9A%84%E9%80%86%E8%A2%AD5-%E9%A2%98%E8%A7%A3/"/>
+    <id>http://Catty2014.github.io/2019/08/23/WOJ3116-诚哥的逆袭5-题解/</id>
+    <published>2019-08-23T01:31:00.000Z</published>
+    <updated>2019-08-23T01:50:47.539Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://oi.cdshishi.net:8000/problempage.php?problem_id=3116" target="_blank" rel="noopener">PORTAL</a></p><h1 id="分析"><a href="#分析" class="headerlink" title="分析:"></a>分析:</h1><p>局面分为两种情况:</p><p>1.所有数字的和为奇数</p><blockquote><p>此时你直接取所有数字,胜(坏坏</p></blockquote><p>2.所有数字的和为偶数</p><blockquote><p>a.如果你可以取数,即数列中有奇数,取出的数的和一定是奇数<br>&nbsp;&nbsp;&nbsp;&nbsp;所以剩下的数的和一定是奇数,胜<br>b.如果你不能取数,即数列中无奇数,负</p></blockquote><p>然后这道题就解决了</p><p>还有一点需要注意的是:</p><div class="table-container"><table><thead><tr><th style="text-align:left">时间限制</th><th style="text-align:left">空间限制</th></tr></thead><tbody><tr><td style="text-align:left">80ms</td><td style="text-align:left">1000KB</td></tr></tbody></table></div><p>所以不能使用<code>bits/stdc++.h</code>,或者<code>#include</code>大量的头文件</p><p>而且由于$n  &lt;= 100000$(原题中没有标明<del>,这是我嫖来的数据规模</del>)</p><p>数组大小为$100000*4/1024=390KB$</p><p>390KB+950KB(程序本身大小,无变量)&gt;1000KB</p><p>所以不能用数组存储</p><h1 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">int</span> t=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> p;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;p);</span><br><span class="line">        t+=p&amp;<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,t?<span class="string">"You"</span>:<span class="string">"Makoto"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;http://oi.cdshishi.net:8000/problempage.php?problem_id=3116&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;PORTAL&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;分析&quot;&gt;&lt;a href=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="OI" scheme="http://Catty2014.github.io/tags/OI/"/>
+    
+      <category term="题解" scheme="http://Catty2014.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+      <category term="数学" scheme="http://Catty2014.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>X9 SPJ(testlib ver.)的使用</title>
